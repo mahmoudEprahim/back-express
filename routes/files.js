@@ -36,7 +36,7 @@ const upload = multer({
 })
 
 //! Get all files for the authenticated user
-router.get("/", authMiddleware, async (req, res) => {
+router.get("https://www.shar.great-site.net/", authMiddleware, async (req, res) => {
   try {
     const files = await File.find({ userId: req.user.userId }).sort({ uploadDate: -1 })
     res.json({ files })
@@ -47,7 +47,7 @@ router.get("/", authMiddleware, async (req, res) => {
 })
 
 // Upload a file
-router.post("/upload", authMiddleware, upload.single("file"), async (req, res) => {
+router.post("https://www.shar.great-site.net/upload", authMiddleware, upload.single("file"), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ error: "No file uploaded" })
@@ -88,7 +88,7 @@ router.post("/upload", authMiddleware, upload.single("file"), async (req, res) =
 })
 
 //! Download a file
-router.get("/:id/download", authMiddleware, async (req, res) => {
+router.get("https://www.shar.great-site.net/:id/download", authMiddleware, async (req, res) => {
   try {
     const file = await File.findOne({
       _id: req.params.id,
@@ -119,7 +119,7 @@ router.get("/:id/download", authMiddleware, async (req, res) => {
 })
 
 //! Delete a file
-router.delete("/:id", authMiddleware, async (req, res) => {
+router.delete("https://www.shar.great-site.net/:id", authMiddleware, async (req, res) => {
   try {
     const file = await File.findOne({
       _id: req.params.id,
@@ -147,7 +147,7 @@ router.delete("/:id", authMiddleware, async (req, res) => {
 })
 
 // Generate share link for a file
-router.post("/:id/share", authMiddleware, async (req, res) => {
+router.post("https://www.shar.great-site.net/:id/share", authMiddleware, async (req, res) => {
   try {
     const file = await File.findOne({
       _id: req.params.id,
@@ -183,7 +183,7 @@ router.post("/:id/share", authMiddleware, async (req, res) => {
 })
 
 // Get shared file info (public route)
-router.get("/share/:token/info", async (req, res) => {
+router.get("https://www.shar.great-site.net/share/:token/info", async (req, res) => {
   try {
     const file = await File.findOne({
       shareToken: req.params.token,
@@ -210,7 +210,7 @@ router.get("/share/:token/info", async (req, res) => {
 })
 
 // Request access to shared file (public route)
-router.post("/share/:token/request-access", async (req, res) => {
+router.post("https://www.shar.great-site.net/share/:token/request-access", async (req, res) => {
   try {
     const file = await File.findOne({
       shareToken: req.params.token,
@@ -254,7 +254,7 @@ router.post("/share/:token/request-access", async (req, res) => {
 })
 
 // Verify access code for shared file (public route)
-router.post("/share/:token/verify-access", async (req, res) => {
+router.post("https://www.shar.great-site.net/share/:token/verify-access", async (req, res) => {
   try {
     const { verificationCode } = req.body
 
@@ -295,7 +295,7 @@ router.post("/share/:token/verify-access", async (req, res) => {
 })
 
 // Download shared file with verification (public route)
-router.get("/share/:token/download", async (req, res) => {
+router.get("https://www.shar.great-site.net/share/:token/download", async (req, res) => {
   try {
     const { code } = req.query
 
