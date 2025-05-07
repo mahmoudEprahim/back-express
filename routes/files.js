@@ -173,7 +173,7 @@ router.post("/:id/share", authMiddleware, async (req, res) => {
     // Generate share URL
     // const shareUrl = `${process.env.APP_URL || "http://localhost:5173"}/share/${shareToken}`
     // const shareUrl = `http://localhost:8800/share/${shareToken}`
-    const shareUrl = `/share/${shareToken}`
+    const shareUrl = `https://www.shar.great-site.net/share/${shareToken}`
 
     res.json({ shareUrl, expiresAt: shareExpiry })
   } catch (err) {
